@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-kyZXEAg3QhqLMpG8r+8fhAXLRK2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>add a todo</title>
+</head>
+<body>
+    <div class="container my-4">
+        <form action="/add" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Todo title </label>
+              <input type="text" class="form-control" name ="title" id="title" 
+              placeholder="Enter the title ">
+            </div> 
+            <div class="mb-3">
+              <label for="desc" class="form-label">todo Description</label>
+              <input type="text" class="form-control" name="desc" id="desc"
+              placeholder="Enter the todo Description">
+            </div>
+           
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
+          </form>
+    </div>
+
+    {% if alltodo ==0%}
+    <div class="p-3 mb-2 bg-dark text-white">No events to display</div>
+    {% else %}
+    <div class="container my-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">S No</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {% for todo in alltodo %}
+                <tr>
+                    <th scope="row">{{loop.index)}</th>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.desc}}</td>
+                   </tr>
+                {% endfor %)
+             </tbody>
+          </table>
+     </div>
+
+    {% endif %}
+</body>
+</html>
